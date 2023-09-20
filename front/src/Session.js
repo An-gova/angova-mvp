@@ -28,6 +28,8 @@ import {
 } from "./services/sessionService";
 import AudioS3 from "./components/AudioS3";
 
+import FeedGet from "./components/FeedGet";
+
 const Session = () => {
   const { t } = useTranslation();
   const [completed, setCompleted] = useState(0);
@@ -426,6 +428,20 @@ const Session = () => {
                       activeSource={activeSource}
                     />
                   )}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                  }}
+                >
+                  <FeedGet />
+                  <div
+                    style={{
+                      width: "20px",
+                    }}
+                  ></div>
+
                 </div>
                 {questions && questions.length > 1 ? (
                   <>
@@ -676,6 +692,16 @@ const Session = () => {
               />
             )}
 
+            <div
+              style={{
+                alignItems: "center",
+                width: "80px",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <FeedGet />
+            </div>
             <button
               onClick={closeExplanationDialogAndNext}
               className={classes.orangeBtn}
