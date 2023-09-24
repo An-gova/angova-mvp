@@ -1,0 +1,43 @@
+name: NodeJS CI/CD
+
+on:
+  push:
+    branches:
+      - mster
+
+jobs:
+  backend:
+    name: Backend CI
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies and run tests
+        working-directory: back
+        run: |
+          npm install
+          npm start
+
+  frontend:
+    name: Frontend CI
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies and build
+        working-directory: front
+        run: |
+          npm install
+          npm start
