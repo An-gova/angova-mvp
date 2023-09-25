@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies and run tests
+      - name: Install dependencies and start
         working-directory: back
         run: |
           npm install
@@ -36,7 +36,7 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies and build
+      - name: Install dependencies and start
         working-directory: front
         run: |
           npm install
