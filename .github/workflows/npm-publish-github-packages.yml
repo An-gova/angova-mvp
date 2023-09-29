@@ -24,7 +24,7 @@ jobs:
         working-directory: front
         run: |
           npm install
-          npm start
+          npm run build
 
   backend:
     name: Backend CI
