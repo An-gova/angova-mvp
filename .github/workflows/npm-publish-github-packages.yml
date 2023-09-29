@@ -7,6 +7,23 @@ on:
   workflow_dispatch:
 
 jobs:
+  backend:
+    name: Backend CI
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies and start
+        working-directory: back
+        run: |
+          npm ci
+          npm start
 
   frontend:
     name: Frontend CI
@@ -23,23 +40,5 @@ jobs:
       - name: Install dependencies and start
         working-directory: front
         run: |
-          npm install
-          npm run build
-
-  backend:
-    name: Backend CI
-    runs-on: self-hosted
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies and start
-        working-directory: back
-        run: |
-          npm install
-          npm start
+          npm ci
+          npm build
